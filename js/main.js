@@ -19,6 +19,25 @@ KioskBoard.Init({
 	keysFontWeight: 'normal', // Font weight of the keyskeysIconSize: '25px', // Size of the icon keys// v1.1.0 and the next versions
 	allowMobileKeyboard: false, // Allow or prevent mobile keyboard usage. Prevented when "false"// v1.3.0 and the next versions
 	autoScroll: true, // Scrolls the document to the top of the input/textarea element. The default value is "true" as before. Prevented when "false"
+});
+// Run KioskBoard
+KioskBoard.Run('.virtual-keyboard'); // Select any input or textarea element(s) to run KioskBoard
+
+var playerName = '';
+$(document).ready(function(){	
+	$(document).keydown(function(e) {
+		if (e.key == 'Enter' && $("#name_input").val() != '') {
+			playerName = $("#name_input").val();
+			sessionStorage.setItem("playername", playerName)
+			$(".infoContent.playerName").html("Name: " + playerName)
+			$(".page_1").trigger("click")
+			$(".page_1").fadeOut()
+			$(".page_2").fadeIn()
+		}
 	});
-	// Run KioskBoard
-	KioskBoard.Run('.virtual-keyboard'); // Select any input or textarea element(s) to run KioskBoard
+});
+
+function continue_game() {
+	$(".page_2").fadeOut()
+	$(".page_3").fadeIn()
+}

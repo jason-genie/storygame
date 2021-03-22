@@ -26,12 +26,59 @@ KioskBoard.Run('.virtual-keyboard'); // Select any input or textarea element(s) 
 var playerName = '';
 var backgroundVideo = document.getElementById("background_video");
 
+var circle1 = anime({
+	targets: [".circle-1"],
+	translateY: -24,
+	translateX: 52,
+	direction: "alternate",
+	loop: true,
+	elasticity: 400,
+	easing: "easeInOutElastic",
+	duration: 1600,
+	delay: 800
+});
+
+var circle2 = anime({
+	targets: [".circle-2"],
+	translateY: 24,
+	direction: "alternate",
+	loop: true,
+	elasticity: 400,
+	easing: "easeInOutElastic",
+	duration: 1600,
+	delay: 800
+});
+
+var circle3 = anime({
+	targets: [".circle-3"],
+	translateY: -24,
+	direction: "alternate",
+	loop: true,
+	elasticity: 400,
+	easing: "easeInOutElastic",
+	duration: 1600,
+	delay: 800
+});
+
+var circle4 = anime({
+	targets: [".circle-4"],
+	translateY: 24,
+	translateX: -52,
+	direction: "alternate",
+	loop: true,
+	elasticity: 400,
+	easing: "easeInOutElastic",
+	duration: 1600,
+	delay: 800
+});
+
+
 window.onload = function onLoad() {
 	var bar = new ProgressBar.Line(container, {
 		strokeWidth: 4,
 		easing: 'easeInOut',
-		duration: 1400,
-		color: '#FFEA82',
+		duration: 5000,
+		color: '#ff0000',
 		trailColor: '#eee',
 		trailWidth: 1,
 		svgStyle: {width: '100%', height: '100%'}
@@ -46,7 +93,7 @@ window.onload = function onLoad() {
 
 	setTimeout(function() {
 		document.getElementById("container").style.display = "none";
-	}, 1400)
+	}, 5000)
 };
 
 $(document).ready(function() {

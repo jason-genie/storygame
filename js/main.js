@@ -84,5 +84,5 @@ function startTimer() {
 }
 
 function stopTimer() {
-	$('.completed_seconds').html(timer.getTimeValues().toString(['seconds']));
+	$('.completed_seconds').html(timer.getTotalTimeValues().seconds);
 }

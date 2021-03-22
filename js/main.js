@@ -23,6 +23,8 @@ KioskBoard.Init({
 // Run KioskBoard
 KioskBoard.Run('.virtual-keyboard'); // Select any input or textarea element(s) to run KioskBoard
 
+AOS.init();
+
 var timer = new easytimer.Timer();
 var playerName = '';
 var backgroundVideo = document.getElementById("background_video");
@@ -68,8 +70,6 @@ $(document).ready(function() {
 			$("#page_1").trigger("click");
 			location.href = "#page_2";
 			timer.start();
-			$("#page_1").fadeOut();
-			$("#page_1").fadeIn();
 		}
 	});
 });

@@ -24,12 +24,12 @@ KioskBoard.Init({
 KioskBoard.Run('.virtual-keyboard'); // Select any input or textarea element(s) to run KioskBoard
 
 var playerName = '';
-$(document).ready(function(){	
+$(document).ready(function() {
 	playerName = sessionStorage.getItem("playername");
-	if (!playerName && location.hash) {
+	if (!playerName || !location.hash) {
 		location.href = "#page_1";
 	}
-	else if(location.hash) {
+	else {
 		$(".infoContent.playerName").html("Name: " + playerName);
 	}
 

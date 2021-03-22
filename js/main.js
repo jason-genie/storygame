@@ -24,8 +24,34 @@ KioskBoard.Init({
 KioskBoard.Run('.virtual-keyboard'); // Select any input or textarea element(s) to run KioskBoard
 
 var playerName = '';
+var backgroundVideo = document.getElementById("background_video");
+
+window.onload = function onLoad() {
+	var bar = new ProgressBar.Line(container, {
+		strokeWidth: 4,
+		easing: 'easeInOut',
+		duration: 1400,
+		color: '#FFEA82',
+		trailColor: '#eee',
+		trailWidth: 1,
+		svgStyle: {width: '100%', height: '100%'}
+	});
+	  
+	bar.animate(1.0, function() {
+		backgroundVideo.style.display = "block";
+		document.getElementById("page_content").style.display = "block";
+		backgroundVideo.play();
+		location.href = "#page_1";
+	});  // Number from 0.0 to 1.0
+
+	setTimeout(function() {
+		document.getElementById("container").style.display = "none";
+	}, 1400)
+};
+
 $(document).ready(function() {
 	playerName = sessionStorage.getItem("playername");
+	
 	if (!playerName || !location.hash) {
 		location.href = "#page_1";
 	}

@@ -16,13 +16,13 @@
 	<video autoplay muted loop id="background_video">
 	  <source src="video/bg.mp4" type="video/mp4">
 	</video>
-	<div  class="page_content">
+	<div class="page_content">
 		<div class="c_navbar">
 			<button type="button" class="btn btn-light btnR">Home</button>	
 			<button type="button" class="btn btn-light btnR">Rules</button>	
 			<button type="button" class="btn btn-light btnR">About</button>	
 		</div>
-		<div class="page_1">
+		<section id="page_1" class="page">
 			<div class="infoC">
 			</div>
 			<div class="storyC">
@@ -30,8 +30,8 @@
 				<input class="virtual-keyboard" id="name_input" data-kioskboard-type="keyboard" data-kioskboard-specialcharacters="false" placeholder="Your Name" />	
 				</p>
 			</div>
-		</div>
-		<div class="page_2" style="display:none">
+		</section>
+		<section id="page_2" class="page">
 			<div class="infoC">
 				
 				<div class="infoContent">Days 1/9</div>
@@ -49,10 +49,10 @@
 				</p>
 			</div>
 			<div class="footerC">
-				<button type="button" class="btn btn-danger btnCont" onclick="continue_game()">Continue</button>	
+				<a class="btn btn-danger btnCont" href="#page_3">Continue</a>	
 			</div>
-		</div>
-		<div class="page_3" style="display:none">
+		</section>
+		<section id="page_3" class="page">
 			<div class="infoC">
 				
 				<div class="infoContent">Days 1/9</div>
@@ -66,11 +66,11 @@
 				</p>
 			</div>
 			<div class="footerC">
-				<button type="button" class="btn btn-danger btnCont">You save the luggages before they start burning</button>	
-				<button type="button" class="btn btn-danger btnCont">You go for food in the jungle, but you get lost.</button>
+				<a class="btn btn-danger btnCont" href="#">You save the luggages before they start burning</a>	
+				<a class="btn btn-danger btnCont" href="#">You go for food in the jungle, but you get lost.</a>
 			</div>
-		</div>
-		<div class="page_4" style="display:none">
+		</section>
+		<section id="page_4" class="page">
 			<div class="infoC">
 				
 				<div class="infoContent">Days 2/9</div>
@@ -88,11 +88,11 @@
 				</p>
 			</div>
 			<div class="footerC">
-				<button type="button" class="btn btn-danger btnCont">Continue</button>	
+				<a class="btn btn-danger btnCont" href="#">Continue</a>	
 				
 			</div>
-		</div>
-		<div class="page_5" style="display:none">
+		</section>
+		<section id="page_5" class="page">
 			<div class="infoC">a
 				
 				<div class="infoContent">Days 3/9</div>
@@ -110,10 +110,10 @@
 				</p>
 			</div>
 			<div class="footerC">
-				<button type="button" class="btn btn-danger btnCont">you cry out for help</button>	
-				<button type="button" class="btn btn-danger btnCont">wawp</button>	
+				<a class="btn btn-danger btnCont">you cry out for help</a>	
+				<a class="btn btn-danger btnCont">wawp</a>	
 			</div>
-		</div>
+		</section>
 	</div>
 	<script src="js/main.js"></script>
 </body>

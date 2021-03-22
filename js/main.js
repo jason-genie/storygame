@@ -25,19 +25,28 @@ KioskBoard.Run('.virtual-keyboard'); // Select any input or textarea element(s) 
 
 var playerName = '';
 $(document).ready(function(){	
+	playerName = sessionStorage.getItem("playername");
+	if (!playerName && location.hash) {
+		location.href = "#page_1";
+	}
+	else if(location.hash) {
+		$(".infoContent.playerName").html("Name: " + playerName);
+	}
+
 	$(document).keydown(function(e) {
 		if (e.key == 'Enter' && $("#name_input").val() != '') {
 			playerName = $("#name_input").val();
-			sessionStorage.setItem("playername", playerName)
-			$(".infoContent.playerName").html("Name: " + playerName)
-			$(".page_1").trigger("click")
-			$(".page_1").fadeOut()
-			$(".page_2").fadeIn()
+			sessionStorage.setItem("playername", playerName);
+			$(".infoContent.playerName").html("Name: " + playerName);
+			$("#page_1").trigger("click");
+			location.href = "#page_2";
+			$("#page_1").fadeOut();
+			$("#page_1").fadeIn();
 		}
 	});
 });
 
 function continue_game() {
-	$(".page_2").fadeOut()
-	$(".page_3").fadeIn()
+	$("#page_2").fadeOut()
+	$("#page_3").fadeIn()
 }

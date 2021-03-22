@@ -23,55 +23,9 @@ KioskBoard.Init({
 // Run KioskBoard
 KioskBoard.Run('.virtual-keyboard'); // Select any input or textarea element(s) to run KioskBoard
 
+var timer = new easytimer.Timer();
 var playerName = '';
 var backgroundVideo = document.getElementById("background_video");
-
-var circle1 = anime({
-	targets: [".circle-1"],
-	translateY: -24,
-	translateX: 52,
-	direction: "alternate",
-	loop: true,
-	elasticity: 400,
-	easing: "easeInOutElastic",
-	duration: 1600,
-	delay: 800
-});
-
-var circle2 = anime({
-	targets: [".circle-2"],
-	translateY: 24,
-	direction: "alternate",
-	loop: true,
-	elasticity: 400,
-	easing: "easeInOutElastic",
-	duration: 1600,
-	delay: 800
-});
-
-var circle3 = anime({
-	targets: [".circle-3"],
-	translateY: -24,
-	direction: "alternate",
-	loop: true,
-	elasticity: 400,
-	easing: "easeInOutElastic",
-	duration: 1600,
-	delay: 800
-});
-
-var circle4 = anime({
-	targets: [".circle-4"],
-	translateY: 24,
-	translateX: -52,
-	direction: "alternate",
-	loop: true,
-	elasticity: 400,
-	easing: "easeInOutElastic",
-	duration: 1600,
-	delay: 800
-});
-
 
 window.onload = function onLoad() {
 	var bar = new ProgressBar.Line(container, {
@@ -89,7 +43,7 @@ window.onload = function onLoad() {
 		document.getElementById("page_content").style.display = "block";
 		backgroundVideo.play();
 		location.href = "#page_1";
-	});  // Number from 0.0 to 1.0
+	});
 
 	setTimeout(function() {
 		document.getElementById("container").style.display = "none";
@@ -113,6 +67,7 @@ $(document).ready(function() {
 			$(".infoContent.playerName").html("Name: " + playerName);
 			$("#page_1").trigger("click");
 			location.href = "#page_2";
+			timer.start();
 			$("#page_1").fadeOut();
 			$("#page_1").fadeIn();
 		}
@@ -122,4 +77,12 @@ $(document).ready(function() {
 function continue_game() {
 	$("#page_2").fadeOut()
 	$("#page_3").fadeIn()
+}
+
+function startTimer() {
+	timer.reset();
+}
+
+function stopTimer() {
+	$('.completed_seconds').html(timer.getTimeValues().toString(['seconds']));
 }

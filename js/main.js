@@ -28,6 +28,8 @@ AOS.init();
 var timer = new easytimer.Timer();
 var playerName = '';
 var backgroundVideo = document.getElementById("background_video");
+var backgroundAudio = new Audio('audio/story_music.mp3');
+backgroundAudio.loop = true;
 
 $(document).ready(function() {
 	var bar = new ProgressBar.Line(container, {
@@ -69,6 +71,7 @@ function playGame() {
 		$("#page_1").trigger("click");
 		location.href = "#page_2";
 		timer.start();
+		backgroundAudio.play();
 	}
 }
 
@@ -78,11 +81,19 @@ function startTimer() {
 
 function gameComplete() {
 	$('.completed_seconds').html(timer.getTotalTimeValues().seconds);
-	var audio = new Audio('audio/good.mp3');
+	var audio = new Audio('audio/win_of_game.wav');
+	backgroundAudio.pause();
 	audio.play();
+	setTimeout(() => {
+		backgroundAudio.play();
+	}, 8000);
 }
 
 function gameFailed() {
-	var audio = new Audio('audio/knock_brush.mp3');
+	var audio = new Audio('audio/end_of_game.wav');
+	backgroundAudio.pause();
 	audio.play();
+	setTimeout(() => {
+		backgroundAudio.play();
+	}, 3000);
 }

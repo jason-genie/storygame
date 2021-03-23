@@ -2,6 +2,7 @@
 
 story based web browser game
 
+### jQuery
 ### ProgressBar for loading
 ### KioskBoard for player name input
 ### Video.js for background video

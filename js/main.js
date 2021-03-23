@@ -35,65 +35,73 @@ $(document).ready(function() {
 	var bar = new ProgressBar.Line(container, {
 		strokeWidth: 4,
 		easing: 'easeInOut',
-		duration: 5000,
+		duration: 5000, // The page loading time, you can change time, one second: 1000, 10 seconds: 10000
 		color: '#ff0000',
 		trailColor: '#eee',
 		trailWidth: 1,
 		svgStyle: {width: '100%', height: '100%'}
 	});
-	  
+	
 	bar.animate(1.0, function() {
-		backgroundVideo.style.display = "block";
-		document.getElementById("page_content").style.display = "block";
-		backgroundVideo.play();
-		location.href = "#page_1";
+		// After loading finish
+		document.getElementById("page_content").style.display = "block"; // Display main pages content
+		backgroundVideo.style.display = "block"; // Show backgroud video
+		backgroundVideo.play(); // Play background video
+		location.href = "#page_1"; // Display main page
 	});
 
 	setTimeout(function() {
+		// After 5 seconds, hide progress bar
 		document.getElementById("container").style.display = "none";
 	}, 5000)
 
+	// Get player name from session
 	playerName = sessionStorage.getItem("playername");
 	
+	// If there is no playername in session, then go to the first page to input name
 	if (!playerName || !location.hash) {
 		location.href = "#page_1";
 	}
+	// If there is playername in session, then set player name
 	else {
 		$(".infoContent.playerName").html("Name: " + playerName);
 	}
 });
 
+// start game
 function playGame() {
-	if ($("#name_input").val() != '') {
-		playerName = $("#name_input").val();
-		sessionStorage.setItem("playername", playerName);
-		$(".infoContent.playerName").html("Name: " + playerName);
+	if ($("#name_input").val() != '') { // User name is not empty then start the game
+		playerName = $("#name_input").val(); // Get player name from Kiosk keyboard input
+		sessionStorage.setItem("playername", playerName); // Save playername in session storage
+		$(".infoContent.playerName").html("Name: " + playerName); // set playername
 		$("#page_1").trigger("click");
-		location.href = "#page_2";
+		location.href = "#page_2"; // Go to game description page, the very first start page of game
 		timer.start();
 		backgroundAudio.play();
 	}
 }
 
 function startTimer() {
-	timer.reset();
+	timer.reset(); // when user restarts game, then reset timer(EasyTimer) to calculate playing time.
 }
 
+// When user successfully completes the game
 function gameComplete() {
-	$('.completed_seconds').html(timer.getTotalTimeValues().seconds);
-	var audio = new Audio('audio/win_of_game.wav');
-	backgroundAudio.pause();
-	audio.play();
+	$('.completed_seconds').html(timer.getTotalTimeValues().seconds); // Displays play time in seconds, EasyTimer
+	var audio = new Audio('audio/win_of_game.wav'); // init "win of game.wav" audio to play
+	backgroundAudio.pause(); // pause background audio to play another audio
+	audio.play(); // play "win of game.wav" audio 
 	setTimeout(() => {
-		backgroundAudio.play();
+		backgroundAudio.play(); // play again background audio after (8 seconds) "win of game.wav is finished"
 	}, 8000);
 }
 
+// When user fails the game
 function gameFailed() {
-	var audio = new Audio('audio/end_of_game.wav');
-	backgroundAudio.pause();
-	audio.play();
+	var audio = new Audio('audio/end_of_game.wav'); // init "end of game.wav" audio to play
+	backgroundAudio.pause(); // pause background audio to play another audio
+	audio.play(); // play "end of game.wav" audio 
 	setTimeout(() => {
-		backgroundAudio.play();
+		backgroundAudio.play(); // play again background audio after (3 seconds) "end of game.wav is finished"
 	}, 3000);
 }

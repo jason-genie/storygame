@@ -29,7 +29,7 @@ var timer = new easytimer.Timer();
 var playerName = '';
 var backgroundVideo = document.getElementById("background_video");
 
-window.onload = function onLoad() {
+$(document).ready(function() {
 	var bar = new ProgressBar.Line(container, {
 		strokeWidth: 4,
 		easing: 'easeInOut',
@@ -50,9 +50,7 @@ window.onload = function onLoad() {
 	setTimeout(function() {
 		document.getElementById("container").style.display = "none";
 	}, 5000)
-};
 
-$(document).ready(function() {
 	playerName = sessionStorage.getItem("playername");
 	
 	if (!playerName || !location.hash) {

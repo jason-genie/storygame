@@ -59,18 +59,18 @@ $(document).ready(function() {
 	else {
 		$(".infoContent.playerName").html("Name: " + playerName);
 	}
-
-	$(document).keydown(function(e) {
-		if (e.key == 'Enter' && $("#name_input").val() != '') {
-			playerName = $("#name_input").val();
-			sessionStorage.setItem("playername", playerName);
-			$(".infoContent.playerName").html("Name: " + playerName);
-			$("#page_1").trigger("click");
-			location.href = "#page_2";
-			timer.start();
-		}
-	});
 });
+
+function playGame() {
+	if ($("#name_input").val() != '') {
+		playerName = $("#name_input").val();
+		sessionStorage.setItem("playername", playerName);
+		$(".infoContent.playerName").html("Name: " + playerName);
+		$("#page_1").trigger("click");
+		location.href = "#page_2";
+		timer.start();
+	}
+}
 
 function startTimer() {
 	timer.reset();

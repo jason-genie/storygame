@@ -72,11 +72,6 @@ $(document).ready(function() {
 	});
 });
 
-function continue_game() {
-	$("#page_2").fadeOut()
-	$("#page_3").fadeIn()
-}
-
 function startTimer() {
 	timer.reset();
 }

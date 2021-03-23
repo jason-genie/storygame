@@ -76,6 +76,13 @@ function startTimer() {
 	timer.reset();
 }
 
-function stopTimer() {
+function gameComplete() {
 	$('.completed_seconds').html(timer.getTotalTimeValues().seconds);
+	var audio = new Audio('audio/good.mp3');
+	audio.play();
+}
+
+function gameFailed() {
+	var audio = new Audio('audio/knock_brush.mp3');
+	audio.play();
 }
